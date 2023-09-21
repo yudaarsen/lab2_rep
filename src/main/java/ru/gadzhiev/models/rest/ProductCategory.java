@@ -1,19 +1,21 @@
 package ru.gadzhiev.models.rest;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum ProductCategory {
     FRUITS ("Фрукты"),
     VEGETABLES ("Овощи"),
     MILK ("Кисломолочные продукты"),
     BOOKS ("Книги");
 
-    private final String name;
+    private final String productName;
 
-    private ProductCategory(String name) {
-       this.name = name;
+    private ProductCategory(String productName) {
+       this.productName = productName;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    @JsonValue
+    public String getValue() {
+        return productName;
     }
 }
