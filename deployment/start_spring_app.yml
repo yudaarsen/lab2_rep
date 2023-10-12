@@ -4,12 +4,12 @@
   become: true
   tasks:
 
-    - name: Update repository index and install git maven default-jre packages
+    - name: Update repository index and install git maven openjdk-19-jdk packages
       apt:
         name:
           - git
           - maven
-          - default-jre
+          - openjdk-19-jdk
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
 
