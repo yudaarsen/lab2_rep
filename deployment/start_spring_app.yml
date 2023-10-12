@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Update repository index and install git maven default-jre packages
+      apt:
+        name:
+          - git
+          - maven
+          - default-jre
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  tasks:
+
+    - name: Download git repository
+      git:
+        repo: https://github.com/yudaarsen/lab2_rep.git
+        dest: /home/arseniy/ansible_dir
+
+    - name: Compile maven project
+      command: mvn -f /home/arseniy/ansible_dir/pom.xml compile
+
+    - name: Start Spring boot application
+      command: nohup mvn -f /home/arseniy/ansible_dir/pom.xml spring-boot:start 

@@ -1,0 +1,7 @@
+---
+
+- hosts: all
+  tasks:
+
+    - name: Start Spring boot application
+      command: mvn -f /home/arseniy/ansible_dir/pom.xml spring-boot:stop
