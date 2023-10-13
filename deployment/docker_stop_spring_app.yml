@@ -1,7 +1,6 @@
 ---
 
 - hosts: all
-  become: true
   tasks:
 
     - name: Stop and remove docker container
