@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Build docker image
+      docker_image:
+        name: lab3-5
+        build:
+          path: ../
+        source: build
+
+    - name: Run docker container
+      docker_container:
+        name: lab3-5
+        image: lab3-5
+        ports:
+          - "8080:8080"
